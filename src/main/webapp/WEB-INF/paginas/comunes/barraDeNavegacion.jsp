@@ -2,10 +2,10 @@
 <script src="jss/barraDeNavegacion.js" type="text/javascript"></script>
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="#">Tareas</a>
+  <a href="#">Sedes</a>
+  <a href="#">Sitios</a>
+  <a href="#">Preciario</a>
 </div>
 
 <div id="main">

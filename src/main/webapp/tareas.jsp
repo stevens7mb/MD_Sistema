@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Font awesome-->
         <script src="https://kit.fontawesome.com/7f727ba7dd.js" crossorigin="anonymous"></script>
-        <title>Control de Clientes</title>
+        <title>Sistema Multiservicios DELTA</title>
     </head>
 
     <body>

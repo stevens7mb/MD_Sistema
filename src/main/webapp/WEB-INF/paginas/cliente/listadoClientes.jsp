@@ -8,26 +8,35 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Listado de Clientes</h4>
+                            <h4>Tareas de Mantenimiento</h4>
                         </div>
                         <table class="table table-striped">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Saldo</th>
+                                    <th>ID</th>
+                                    <th>Ticket</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin</th>
+                                    <th>Item Trabajo</th>
+                                    <th>RDA</th>
+                                    <th>Sitio</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Iteramos cada elemento de la lista de clientes-->
-                            <c:forEach var="cliente" items="${clientes}" varStatus="status">
+                            <c:forEach var="tarea" items="${tareas}" varStatus="status">
                                 <tr>
-                                    <td>${cliente.idCliente}</td>
-                                    <td>${cliente.nombre} ${cliente.apellido}</td>
+                                    <td>${tarea.idTarea}</td>
+                                    <td>${tarea.ticket} </td>
+                                    <td>${tarea.fechaInicioTarea} </td>
+                                    <td>${tarea.fechaFinTarea} </td>
+                                    <td>${tarea.item} </td>
+                                    <td>${tarea.rda} </td>
+                                    <td>${tarea.idSitio} </td>
                                     <td><fmt:formatNumber value="${cliente.saldo}" type="currency"/> </td>    
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}"
+                                        <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idTarea=${tarea.idTarea}"
                                            class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Editar
                                         </a>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col">
             <p class="lead text-center">
-                Copyright &copy; GlobalMentoring.com.mx
+                Copyright &copy; SSsystems
             </p>
         </div>
     </div>

@@ -1,7 +1,8 @@
 package web;
 
-import datos.ClienteDaoJDBC;
+import datos.TareaDaoJDBC;
 import dominio.Cliente;
+import dominio.Tarea;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -37,14 +38,14 @@ public class ServletControlador extends HttpServlet {
 
     private void accionDefault(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Cliente> clientes = new ClienteDaoJDBC().listar();
-        System.out.println("clientes =" + clientes);
+        List<Tarea> tareas = new TareaDaoJDBC().listar();
+        System.out.println("tareas =" + tareas);
         HttpSession sesion = request.getSession();
-        sesion.setAttribute("clientes", clientes);
-        sesion.setAttribute("totalClientes", clientes.size());
-        sesion.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
-        //request.getRequestDispatcher("clientes.jsp").forward(request, response);
-        response.sendRedirect("clientes.jsp");
+        sesion.setAttribute("tareas", tareas);
+        //sesion.setAttribute("totalClientes", clientes.size());
+        //sesion.setAttribute("saldoTotal", this.calcularSaldoTotal(clientes));
+        request.getRequestDispatcher("tareas.jsp").forward(request, response);
+        response.sendRedirect("tareas.jsp");
     }
 
     private void insertarCliente(HttpServletRequest request, HttpServletResponse response)
@@ -62,7 +63,7 @@ public class ServletControlador extends HttpServlet {
         //Creamos el objeto de cliente(modelo)
         Cliente cliente = new Cliente(nombre, apellido, email, telefono, saldo);
         //Insertamos el nuevo objeto en la base de datos
-        int registrosModificados = new ClienteDaoJDBC().insertar(cliente);
+        int registrosModificados = new TareaDaoJDBC().insertar(cliente);
         System.out.println("registrosModificados = " + registrosModificados);
         //Redirigimos hacia accion por default
         this.accionDefault(request, response);
@@ -84,7 +85,7 @@ public class ServletControlador extends HttpServlet {
         //Creamos el objeto de cliente(modelo)
         Cliente cliente = new Cliente(idCliente, nombre, apellido, email, telefono, saldo);
         //Moodificamos el objeto en la base de datos
-        int registrosModificados = new ClienteDaoJDBC().actualizar(cliente);
+        int registrosModificados = new TareaDaoJDBC().actualizar(cliente);
         System.out.println("registrosModificados = " + registrosModificados);
         //Redirigimos hacia accion por default
         this.accionDefault(request, response);
@@ -97,7 +98,7 @@ public class ServletControlador extends HttpServlet {
         //Creamos el objeto de cliente(modelo)
         Cliente cliente = new Cliente(idCliente);
         //Eliminamos el objeto en la base de datos
-        int registrosModificados = new ClienteDaoJDBC().eliminar(cliente);
+        int registrosModificados = new TareaDaoJDBC().eliminar(cliente);
         System.out.println("registrosModificados = " + registrosModificados);
         //Redirigimos hacia accion por default
         this.accionDefault(request, response);
@@ -127,7 +128,7 @@ public class ServletControlador extends HttpServlet {
             throws ServletException, IOException {
         //Recuperamos el idCliente
         int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-        Cliente cliente = new ClienteDaoJDBC().encontrar(new Cliente(idCliente));
+        Cliente cliente = new TareaDaoJDBC().encontrar(new Cliente(idCliente));
         request.setAttribute("cliente", cliente);
         String jspEditar = "/WEB-INF/paginas/cliente/editarCliente.jsp";
         request.getRequestDispatcher(jspEditar).forward(request, response);
