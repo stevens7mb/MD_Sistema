@@ -10,7 +10,7 @@
                         <div class="card-header">
                             <h4>Tareas de Mantenimiento</h4>
                         </div>
-                        <table class="table table-striped">
+                        <table class="table table-responsive-xl table-striped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -34,7 +34,7 @@
                                     <td>${tarea.item} </td>
                                     <td>${tarea.rda} </td>
                                     <td>${tarea.idSitio} </td>
-                                    <td><fmt:formatNumber value="${cliente.saldo}" type="currency"/> </td>    
+                                   <!-- <td><fmt:formatNumber value="${cliente.saldo}" type="currency"/> </td>    -->
                                     <td>
                                         <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idTarea=${tarea.idTarea}"
                                            class="btn btn-secondary">

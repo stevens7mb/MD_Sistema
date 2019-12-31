@@ -20,7 +20,7 @@
         <!-- Botones de Navegacion-->
         <jsp:include page="/WEB-INF/paginas/comunes/botonesNavegacion.jsp"/> 
         <!-- Listado de clientes-->
-        <jsp:include page="/WEB-INF/paginas/cliente/listadoClientes.jsp"/> 
+        <jsp:include page="/WEB-INF/paginas/cliente/listadoTareas.jsp"/> 
         <!-- Pie de página-->
         <jsp:include page="/WEB-INF/paginas/comunes/piePagina.jsp"/> 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

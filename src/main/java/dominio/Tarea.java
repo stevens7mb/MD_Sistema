@@ -29,6 +29,7 @@ public class Tarea {
         this.fechaFinTarea = fechaFinTarea;
         this.item = item;
         this.idSede = idSede;
+        this.rda = rda;
         this.idSitio = idSitio;
         this.idUsuario = idUsuario;
     }
@@ -40,13 +41,14 @@ public class Tarea {
         this.fechaFinTarea = fechaFinTarea;
         this.item = item;
         this.idSede = idSede;
+        this.rda = rda;
         this.idSitio = idSitio;
         this.idUsuario = idUsuario;
     }
 
-  
-    
-        public int getIdTarea() {
+
+
+    public int getIdTarea() {
         return idTarea;
     }
 
@@ -122,6 +124,5 @@ public class Tarea {
     public String toString() {
         return "Tarea{" + "idTarea=" + idTarea + ", ticket=" + ticket + ", fechaInicioTarea=" + fechaInicioTarea + ", fechaFinTarea=" + fechaFinTarea + ", item=" + item + ", idSede=" + idSede + ", rda=" + rda + ", idSitio=" + idSitio + ", idUsuario=" + idUsuario + '}';
     }
-    
-    
+
 }

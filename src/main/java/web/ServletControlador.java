@@ -51,19 +51,43 @@ public class ServletControlador extends HttpServlet {
     private void insertarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Recuperamos los valores del formulario agregarCliente
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String email = request.getParameter("email");
-        String telefono = request.getParameter("telefono");
-        double saldo = 0;
-        String saldoString = request.getParameter("saldo");
-        if (saldoString != null && !"".equals(saldoString)) {
-            saldo = Double.parseDouble(saldoString);
+        String ticket = request.getParameter("ticket");
+        String fechaInicioTarea = request.getParameter("fechaInicioTarea");
+        String fechaFinTarea = request.getParameter("fechaFinTarea");
+
+        Integer item = 0;
+        String itemString = request.getParameter("item");
+        if (itemString != null && !"".equals(itemString)) {
+            item = Integer.parseInt(itemString);
         }
+
+        Integer idSede = 0;
+        String idSedeString = request.getParameter("idSede");
+        if (idSedeString != null && !"".equals(idSedeString)) {
+            item = Integer.parseInt(idSedeString);
+        }
+
+        String rda = request.getParameter("rda");
+        
+        Integer idSitio = 0;
+        String idSitioString = request.getParameter("idSitio");
+        if (idSitioString != null && !"".equals(idSitioString)) {
+            item = Integer.parseInt(idSedeString);
+        }
+        
+        Integer idUsuario = 0;
+        String idUsuarioString = request.getParameter("idUsuario");
+        if (idUsuarioString != null && !"".equals(idUsuarioString)) {
+            item = Integer.parseInt(idUsuarioString);
+        }
+//        String saldoString = request.getParameter("saldo");
+//        if (saldoString != null && !"".equals(saldoString)) {
+//            saldo = Double.parseDouble(saldoString);
+//        }
         //Creamos el objeto de cliente(modelo)
-        Cliente cliente = new Cliente(nombre, apellido, email, telefono, saldo);
+        Tarea tarea = new Tarea(ticket, fechaInicioTarea, fechaFinTarea, item, idSede, rda, idSitio, idUsuario);
         //Insertamos el nuevo objeto en la base de datos
-        int registrosModificados = new TareaDaoJDBC().insertar(cliente);
+        int registrosModificados = new TareaDaoJDBC().insertar(tarea);
         System.out.println("registrosModificados = " + registrosModificados);
         //Redirigimos hacia accion por default
         this.accionDefault(request, response);
@@ -90,7 +114,7 @@ public class ServletControlador extends HttpServlet {
         //Redirigimos hacia accion por default
         this.accionDefault(request, response);
     }
-    
+
     private void eliminarCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Recuperamos los valores del formulario agregarCliente

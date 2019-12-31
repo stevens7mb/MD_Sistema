@@ -15,8 +15,8 @@ public class TareaDaoJDBC {
             + " FROM TAREAS";
     private static final String SQL_SELECT_BY_ID = "SELECT idcliente, nombre, apellido, email, telefono, saldo "
             + " FROM cliente WHERE idcliente=?";
-    private static final String SQL_INSERT = "INSERT INTO cliente(nombre, apellido, email, telefono, saldo)"
-            + "VALUES(?,?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO TAREAS(ticket, fecha_inicio_tarea, fecha_fin_tarea, item, id_sede, rda, id_sitio, id_usuario)"
+            + "VALUES(?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE cliente "
             + " SET nombre=?, apellido=?, email=?, telefono=?, saldo=? WHERE idcliente=?";
     private static final String SQL_DELETE = "DELETE FROM cliente WHERE idcliente = ?";
@@ -87,18 +87,21 @@ public class TareaDaoJDBC {
         return cliente;
     }
 
-    public int insertar(Cliente cliente) {
+    public int insertar(Tarea tarea) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, cliente.getNombre());
-            stmt.setString(2, cliente.getApellido());
-            stmt.setString(3, cliente.getEmail());
-            stmt.setString(4, cliente.getTelefono());
-            stmt.setDouble(5, cliente.getSaldo());
+            stmt.setString(1, tarea.getTicket());
+            stmt.setString(2, tarea.getFechaInicioTarea());
+            stmt.setString(3, tarea.getFechaFinTarea());
+            stmt.setInt(4, tarea.getItem());
+            stmt.setInt(5, tarea.getIdSede());
+            stmt.setInt(6, tarea.getItem());
+            stmt.setInt(7, tarea.getIdSitio());
+            stmt.setInt(8, tarea.getIdUsuario());
             rows = stmt.executeUpdate();
 
         } catch (SQLException ex) {
